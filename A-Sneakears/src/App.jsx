@@ -22,7 +22,6 @@ function App() {
   const onAddToCart = (obj) => {
     setCartItems((prev) => [...prev, obj]);
   };
-  1;
   const onChangeSearchInput = (event) => {
     setSeachValue(event.target.value);
   };
@@ -40,13 +39,22 @@ function App() {
               ? `Поиск по запросу: ${searchValue} `
               : "Все Короссовки"}
           </h1>
-          <div className="search-block mr-30">
+          <div className="search-block d-flex">
             <img src="/img/search.svg" alt="Search" />
-            <input
+            <input 
               onChange={onChangeSearchInput}
+              value={searchValue}
               placeholder="Поиск..."
               type="text"
-            />
+              />
+              {searchValue && (
+                <img
+                  onClick={() => setSeachValue("")}
+                  className="clear cu-p"
+                  src="/img/btn-remove.svg"
+                  alt="Clear"
+                />
+              )}
           </div>
         </div>
         <div className="d-flex flex-wrap">
